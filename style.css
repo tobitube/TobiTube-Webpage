@@ -98,18 +98,173 @@ body {
 
 .movies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
     padding: 2rem 0;
 }
 
-/* Movie Card Styles */
+/* Movie Card Styles with Poster */
 .movie-card {
     background: rgba(20, 20, 60, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 255, 255, 0.4);
+    border-color: #00ffff;
+}
+
+.movie-card:hover::before {
+    left: 100%;
+}
+
+/* Movie Poster Styles */
+.movie-poster {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .poster-img {
+    transform: scale(1.05);
+}
+
+.movie-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #00ffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.movie-description {
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.download-info {
+    color: #888888;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(45deg, #00ff88, #00ffff);
+    color: #0a0a2a;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
+    background: linear-gradient(45deg, #00ffff, #00ff88);
+}
+
+/* Footer */
+.footer {
+    background: rgba(10, 10, 42, 0.95);
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(0, 255, 255, 0.3);
+    color: #888888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .telegram-btn {
+        font-size: 1.2rem;
+        padding: 1rem 1.5rem;
+    }
+    
+    .movies-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .movie-card {
+        padding: 1.2rem;
+    }
+    
+    .movie-poster {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .telegram-btn {
+        font-size: 1rem;
+    }
+    
+    .movie-title {
+        font-size: 1.4rem;
+    }
+    
+    .movie-poster {
+        height: 300px;
+    }
+}    border: 1px solid rgba(0, 255, 255, 0.3);
     transition: all 0.3s ease;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     position: relative;
